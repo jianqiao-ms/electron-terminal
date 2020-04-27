@@ -18,5 +18,7 @@
       "cursorDown"
     ]
   },
-  "remote.WSL.fileWatcher.polling": true
+"remote.WSL.fileWatcher.polling": true,
+"python.linting.pylintEnabled": true,
+"python.linting.enabled": true
 }
