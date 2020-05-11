@@ -1,2 +1,29 @@
-@import '~bootstrap/scss/bootstrap.scss';
+// @import '~bootstrap/scss/bootstrap.scss';
 @import '~xterm/css/xterm.css';
+
+
+@font-face {
+    font-family: "ptmono";
+    src: url("fonts/ptmono/PTMono-Regular.ttf") format("truetype")
+}
+@font-face {
+    font-family: "spacemono";
+    src: url("fonts/spacemono/SpaceMono-Bold.ttf") format("truetype")
+}
+@font-face {
+    font-family: "roboto";
+    src: url("fonts/roboto/RobotoMono-Regular.ttf") format("truetype")
+}
+
+$term-pt-font: ptmono;
+$term-space-font: spacemono;
+
+.term-pt-font {
+    font-family: "ptmono"!important;
+}
+.term-space-font {
+    font-family: "spacemono"!important;
+}
+.term-roboto-font {
+    font-family: "roboto"!important;
+}

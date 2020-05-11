@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './terminal.scss';
+import './fonts/ptmono/PTMono-Regular.ttf'
+import './fonts/spacemono/SpaceMono-Bold.ttf'
+import './fonts/roboto/RobotoMono-Regular.ttf'
 
 import { Terminal } from 'xterm'
+import { FitAddon } from 'xterm-addon-fit';
 // import { AttachAddon } from 'xterm-addon-attach';
 
 
@@ -21,18 +25,23 @@ class SSHTerminal extends Component {
         // const pid = processId;
         // socketURL += processId;
         let socketURL = "ws://192.168.0.100:8888/terminal/ssh"
-        const term = new Terminal({ 
-            fontFamily: 'monospace',
-            letterSpacing: 1
-         });
         const socket = new WebSocket(socketURL);
+        let term = new Terminal({ 
+            fontFamily: 'ptmono',
+            // letterSpacing: -5,
+            // letterSpacing: 0
+            rendererType:"dom",
+            cols: 80,
+            rows: 24,
+            screenKeys: true,
+            useStyle: true
+         });
+        const fitAddon = new FitAddon();
+        term.loadAddon(fitAddon);
         // const attachAddon = new AttachAddon(socket);
         
 
         socket.onopen = () => {
-            // term.loadAddon(attachAddon);
-            // term._initialized = true;
-
             socket.send(JSON.stringify(
                     {
                         "type": "conn",
@@ -47,8 +56,10 @@ class SSHTerminal extends Component {
             )
             socket.onmessage = (m) => {
                 let msg = JSON.parse(m.data)
-                if(msg.type==='stdout')
+                if(msg.type==='stdout') {
+                    console.log(msg.data)
                     term.write(msg.data)
+                }
             }
         }
 
@@ -59,15 +70,27 @@ class SSHTerminal extends Component {
             }))
         })
 
+        term.onResize((e) => {socket.send(JSON.stringify(
+            {
+                "type": "resize",
+                "data": e
+            }))
+        })
+
         
         
         term.open(this.terminalRef.current)
+        // fitAddon.fit();
+        // term.write("Last login: Mon Apr 27 18:17:29 2020 from 192.168.0.1")
         // this.term = term?
     }
 
   render() {
         return (
-        <div className="container-fluid" ref={this.terminalRef}></div>
+            <div className="container-fluid term-roboto-font">
+                Last login: Mon Apr 27 18:17:29 2020 from 192.168.0.1
+                <div ref={this.terminalRef}></div>
+            </div>
         );
   }
 }

@@ -34,7 +34,10 @@ class SSHTerm():
             password=password, 
             known_hosts = None
         )
-        self.process = await conn.create_process(term_type='xterm-color')
+        self.process = await conn.create_process(
+            term_type='linux',
+            term_size=(80,24)
+        )
         self.process.data_received = self.send_stream
         self.process.eof_received = self.socket.close
 

@@ -23,11 +23,11 @@ class SSHSessionHandler(tornado.websocket.WebSocketHandler):
     def open(self):
         self.term = SSHTerm(self)
         
-    async def on_message(self, _):
-        msg = Message(_)
+    async def on_message(self, msg):
+        message = Message(msg)
 
-        if msg.type == 'stdin':
-            self.term.write(msg.data)
-        if msg.type == 'conn':
-            await self.term.connect(**msg.data)
+        if message.type == 'stdin':
+            self.term.write(message.data)
+        if message.type == 'conn':
+            await self.term.connect(**message.data)
        

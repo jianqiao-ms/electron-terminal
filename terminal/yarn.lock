@@ -11101,6 +11101,11 @@ xterm-addon-attach@^0.5.0:
   resolved "https://registry.yarnpkg.com/xterm-addon-attach/-/xterm-addon-attach-0.5.0.tgz#e35cde4ae493ecace7d07e52ff2b9714e3c43068"
   integrity sha512-L6ThPjF/fVt+gJS2+2h2rEEAXNxIRmCU8/RCM6rYR08K9GtPiHmYcnpRT7WNJf31yFLpWVA8dKcItfP3C0ZKlA==
 
+xterm-addon-fit@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/xterm-addon-fit/-/xterm-addon-fit-0.3.0.tgz#341710741027de9d648a9f84415a01ddfdbbe715"
+  integrity sha512-kvkiqHVrnMXgyCH9Xn0BOBJ7XaWC/4BgpSWQy3SueqximgW630t/QOankgqkvk11iTOCwWdAY9DTyQBXUMN3lw==
+
 xterm@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/xterm/-/xterm-4.5.0.tgz#c7fd145c6cf91c9f2ef07011a9b35026cf4bfecc"

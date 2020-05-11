@@ -7,9 +7,9 @@
   "author": "jianqiao.ms <jianqiao.ms@foxmail.com>",
   "license": "MPL-2.0",
   "dependencies": {
-    "electron": "^8.2.2"
+    "electron": "^8.2.5"
   },
   "scripts": {
-    "start": "./node_modules/electron/dist/electron ."
+    "start": "electron ."
   }
 }
